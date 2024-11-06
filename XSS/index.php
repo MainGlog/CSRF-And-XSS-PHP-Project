@@ -1,25 +1,15 @@
 <?php
     $conn = new mysqli('servername', 'username', 'password', 'db');
-    $user = $conn->query("SELECT id, name FROM users WHERE id = 1");
 
-    //! Setting variable to the value of the input
+    //! Inserting into the database
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
         $name = $_POST['name'];
+        //! Database columns: id (auto-incrementing), name
+        $conn->query("INSERT INTO USERS VALUES(DEFAULT, $name)");
     }
+    $user = $conn->query("SELECT id, name FROM users WHERE id = 123");
 
-    //! Inserting into the database
-    $stmt = $conn->prepare("INSERT INTO USERS VALUES(DEFAULT, $name)");
-    $stmt->bind_param('s');
-
-    if ($stmt->execute() === false)
-    {
-        error_log("Error inserting user: " . $conn->error);
-    }
-    $stmt->close();
-
-    //! Setting variable to display user information
-    $user = [ 'id' => '1', 'name' => $name ];
 ?>
 
 <html lang="en-US">
@@ -33,7 +23,7 @@
             <input type="text" name="name">
 
             <button type="submit">Enter</button>
-            <p hidden>Hi,<?=$user['name']?>! Your user id is <?=$user['id']?></p>
+            <p>Hi,<?=$user['name']?>! Your user id is <?=$user['id']?></p>
         </form>
     </body>
 </html>

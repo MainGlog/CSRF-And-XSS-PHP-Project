@@ -1,0 +1,1 @@
+document.getElementById('name').textContent = "Hi, <script>alert('XSS');</script>! Your user id is 123";

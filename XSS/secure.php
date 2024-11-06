@@ -1,25 +1,26 @@
 <?php
-$conn = new mysqli('servername', 'username', 'password', 'db');
-$user = $conn->query("SELECT id, name FROM users WHERE id = 1");
+    $conn = new mysqli('servername', 'username', 'password', 'db');
+    $user = $conn->query("SELECT id, name FROM users WHERE id = 1");
 
-//! Setting variable to the sanitized value of the input
-if($_SERVER["REQUEST_METHOD"] == "POST")
-{
-    $name = htmlentities($_POST['name']);
-}
+    //! Setting variable to the sanitized value of the input
+    if($_SERVER["REQUEST_METHOD"] == "POST")
+    {
+        $name = htmlentities($_POST['name']);
+    }
 
-//! Inserting into the database
-$stmt = $conn->prepare("INSERT INTO USERS VALUES(DEFAULT, $name)");
-$stmt->bind_param('s');
+    //! Preparing query for insertion
+    $stmt = $conn->prepare("INSERT INTO USERS VALUES(DEFAULT, $name)");
+    $stmt->bind_param('s');
 
-if ($stmt->execute() === false)
-{
-    error_log("Error inserting user: " . $conn->error);
-}
-$stmt->close();
+    //! Attempts to execute insertion query
+    if ($stmt->execute() === false)
+    {
+        error_log("Error inserting user: " . $conn->error);
+    }
+    $stmt->close();
 
-//! Setting variable to display user information
-$user = [ 'id' => '1', 'name' => $name ];
+    //! Setting variable to display user information
+    $user = [ 'id' => '123', 'name' => $name ];
 ?>
 
 <html lang="en-US">

