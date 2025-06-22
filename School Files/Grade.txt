@@ -1,0 +1,13 @@
+85/100
+
+Categories
+
+Research Paper - 35/40
+Paper formatting guidelines not strictly followed.
+
+GitHub Repository & Code - 22/30
+- (-5) Missing README.md file.
+- (-3) Missing .gitignore file.
+
+Presentation and Answering Questions - 28/30
+The presentation was well done overall, though there were a few moment where you seemed a bit unsure. Great job nonetheless!
